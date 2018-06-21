@@ -27,8 +27,8 @@ public class LoginServlet extends HttpServlet {
         String userPass = request.getParameter("userPass");
 
         User upUser = new User();
-        upUser.setUserName(userName);
-        upUser.setAddress(userPass);
+        upUser.setName(userName);
+        upUser.setPass(userPass);
 
         boolean flag = loginService.checkLogin(upUser);
 
@@ -39,10 +39,13 @@ public class LoginServlet extends HttpServlet {
 
         session.setAttribute("userName", userName);
         if (flag) {
-            request.getRequestDispatcher("/succ.jsp").forward(request, response);
+            System.out.println("登陆成功！");
+//            request.getRequestDispatcher("/succ.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("/fail.jsp").forward(request, response);
+            System.out.println("登录失败！");
+//            request.getRequestDispatcher("/fail.jsp").forward(request, response);
         }
 
     }
+
 }

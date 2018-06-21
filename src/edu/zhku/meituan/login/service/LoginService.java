@@ -13,14 +13,14 @@ public class LoginService {
     public boolean checkLogin(User upUser) {
         boolean flag = false;
 
-        String userName = upUser.getUserName();
-        String userPass = upUser.getUserPass();
+        String userName = upUser.getName();
+        String userPass = upUser.getPass();
 
-        User dbUser = ld.getUserByName(userName);
+        User dbUser = ld.getUserByName(upUser);
 
         if (dbUser != null) {
-            if (userName.equals(dbUser.getUserName())
-                    && userPass.equals(dbUser.getUserPass())) {
+            if (userName.equals(dbUser.getName())
+                    && userPass.equals(dbUser.getPass())) {
                 flag = true;
             }
         }
